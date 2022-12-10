@@ -3,7 +3,6 @@ pipeline{
     tools{
         maven 'local_maven'
     }
-
     stages{
         stage ('Build'){
             steps{
@@ -16,8 +15,12 @@ pipeline{
                 }
             }
         }
-        stage ('Deploy to tomcat server'){
+        stage ('Deploy to tomcat server') {
             steps{
+                script{
+                    readProp = readProperties file: 'build.properties'
+                }
+                echo "This is running on ${readProp['deploy.type']}"
                 deploy adapters: [tomcat10(path: '', url: 'http://localhost:8081/')], contextPath: null, war: '**/*.war'
             }
         }
