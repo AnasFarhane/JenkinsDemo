@@ -1,14 +1,13 @@
 package com.example.jenkinsdemo;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class WelcomeController {
 
-    @RequestMapping(value = "/welcome")
-    public ModelAndView welcome(){
-        return new ModelAndView("login");
+    @RequestMapping("/welcome")
+    public String welcome(){
+        return "Hey, I am from external tomcat";
     }
 }
