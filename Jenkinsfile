@@ -18,7 +18,7 @@ pipeline{
         stage ('Deploy to tomcat server') {
             steps{
                 echo "This is running"
-                deploy adapters: [tomcat9(path: '', url: 'http://localhost:8081/')], contextPath: null, war: '**/*.war'
+                deploy adapters: [tomcat9(path: '', url: 'http://localhost:8085/')], contextPath: null, war: '**/*.war'
             }
         }
     }
